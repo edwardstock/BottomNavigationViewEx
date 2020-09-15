@@ -132,24 +132,19 @@ allprojects {
 		...
 		maven { url "https://jitpack.io" }
 		maven { url "https://maven.google.com" }
+		maven { url "https://dl.bintray.com/edwardstock/android" }
 	}
 }
 ```
 
 Step 2. Add the dependency
-1. old version support lib is 25 or 26
+1. Add latest version
 ```groovy
-compile 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
-compile "com.android.support:design:26.+"
+compile 'com.edwardstock.android:BottomNavigationViewEx:2.1.0'
 ```
-2. new version support lib = 28
-```groovy
-implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
-implementation "com.android.support:design:28.0.0"
-```
-3. AndroidX
-use new version，and add config into gradle.properties
-```
+2. AndroidX
+2.0.1 uses androidx, but if you don't, enable jetifier
+```properties
 android.useAndroidX=true
 android.enableJetifier=true
 ```
