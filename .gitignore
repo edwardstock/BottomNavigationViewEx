@@ -6,3 +6,5 @@
 /build
 /captures
 .externalNativeBuild
+publish_local.sh
+publish_remote.sh

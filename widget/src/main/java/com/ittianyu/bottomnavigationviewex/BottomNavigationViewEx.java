@@ -3,13 +3,15 @@ package com.ittianyu.bottomnavigationviewex;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+
+import androidx.viewpager.widget.ViewPager;
 
 public class BottomNavigationViewEx extends BottomNavigationViewInner {
 

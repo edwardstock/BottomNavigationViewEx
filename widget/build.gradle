@@ -1,7 +1,48 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
-group='com.github.ittianyu'
+group='com.edwardstock.android'
+version = "2.1.0"
+
+ext {
+    buildArtifactName = "BottomNavigationViewEx"
+    buildArtifactVersion = version
+    buildArtifactGroup = group
+
+    pomName = "bip3x"
+    pomUrl = "https://github.com/edwardstock/BottomNavigationViewEx"
+    pomScm = {
+        connection = "scm:git:git://github.com/edwardstock/BottomNavigationViewEx.git"
+        url = pomUrl
+    }
+    pomInceptionYear = "2016"
+    pomContributors = {}
+    pomDescription = "An android lib for enhancing BottomNavigationView"
+    pomDevelopers = {
+        developer {
+            id = "edwardstock"
+            name = "Eduard Maximovich"
+            email = "edwatd.vstock@gmail.com"
+            roles = ["maintainer"]
+            timezone = "Europe/Moscow"
+        }
+        developer {
+            id = "ittianyu"
+            name = ""
+            email = ""
+            roles = ["owner"]
+        }
+    }
+    pomLicenses = {
+        license {
+            name = "MIT"
+            url = "https://github.com/edwardstock/BottomNavigationViewEx/blob/master/LICENSE"
+            distribution = "repo"
+        }
+    }
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -11,9 +52,9 @@ android {
         minSdkVersion 14
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 24
-        versionName "2.0.4"
+        versionName version
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
     buildTypes {
@@ -27,11 +68,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation 'com.google.android.material:material:1.2.1'
 }
 
 // 指定编码
@@ -39,26 +80,25 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
-// 打包源码
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
+apply from: '../scripts/maven_publish.gradle'
 
-task javadoc(type: Javadoc) {
-    failOnError  false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
-}
-
-// 制作文档(Javadoc)
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
-}
+//
+//// 打包源码
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+//
+//task javadoc(type: Javadoc) {
+//    failOnError  false
+//    source = android.sourceSets.main.java.sourceFiles
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    classpath += configurations.compile
+//}
+//
+//// 制作文档(Javadoc)
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//

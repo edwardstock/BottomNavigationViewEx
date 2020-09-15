@@ -3,6 +3,10 @@
 ## BottomNavigationViewEx ##
 An android lib for enhancing BottomNavigationView.
 
+## Update 2.1.0
+- Updated all dependencies
+- Migrated to androidx
+
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg) ![api 9+](https://img.shields.io/badge/API-9%2B-green.svg)
 
 
