@@ -30,8 +30,8 @@ ext {
         }
         developer {
             id = "ittianyu"
-            name = ""
-            email = ""
+            name = "Linsong Wang"
+            email = "admin@ittianyu.com"
             roles = ["owner"]
         }
     }
